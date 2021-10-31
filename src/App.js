@@ -1,11 +1,22 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import { people } from './Data.js';
+import { getImageUrl } from './Utils.js';
 
-export default function App() {
+export default function List() {
+  const listItems = people.map((person) => (
+    <li key={person.id}>
+      <img src={getImageUrl(person)} alt={person.name} />
+      <p>
+        <b>{person.name}:</b>
+        {' ' + person.profession + ' '}
+        known for {person.accomplishment}
+      </p>
+    </li>
+  ));
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
-    </div>
+    <article>
+      <h1>Scientists</h1>
+      <ul>{listItems}</ul>
+    </article>
   );
 }
